@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sky 9 Fitness - Karimnagar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkBase: '#1a1816', // slightly warm dark
+                        cardBg: '#26221f',
+                        brandOrange: '#f97316',
+                        brandOrangeLight: '#fdba74',
+                        brandWhite: '#f8fafc'
+                    },
+                    fontFamily: {
+                        sans: ['Lato', 'sans-serif'],
+                        athletic: ['Anton', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #1a1816; color: #f8fafc; overflow-x: hidden; }
+        
+        .hero-bg-warm {
+            position: relative;
+            background-color: #1a1816;
+        }
+        
+        .hero-bg-warm::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg, #1a1816 0%, rgba(26,24,22,0.4) 100%), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: multiply;
+        }
+
+        .btn-orange {
+            background-color: #f97316;
+            color: white;
+            font-family: 'Anton', sans-serif;
+            letter-spacing: 0.05em;
+            padding: 1rem 2rem;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4);
+        }
+        .btn-orange:hover {
+            background-color: #ea580c;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(249, 115, 22, 0.6);
+        }
+
+        .btn-outline-white {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+            font-family: 'Anton', sans-serif;
+            letter-spacing: 0.05em;
+            padding: 1rem 2rem;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+        .btn-outline-white:hover {
+            background-color: white;
+            color: #1a1816;
+        }
+
+        .stat-number {
+            font-family: 'Anton', sans-serif;
+            background: linear-gradient(90deg, #fdba74, #f97316);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Toggle Switch */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #f97316;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #f97316;
+        }
+
+        .glass-nav-warm { background: rgba(26, 24, 22, 0.95); border-bottom: 2px solid rgba(249, 115, 22, 0.5); }
+        
+        .gallery-item { overflow: hidden; border-radius: 0.5rem; }
+        .gallery-item img, .gallery-item video { transition: transform 0.5s ease; }
+        .gallery-item:hover img, .gallery-item:hover video { transform: scale(1.08); }
+        
+        /* Preloader Styles */
+        #preloader { position: fixed; inset: 0; width: 100vw; height: 100vh; background-color: theme('colors.darkBase'); z-index: 99999; display: flex; justify-content: center; align-items: center; transition: opacity 0.6s ease; }
+        .logo-pulse { width: 100px; height: auto; object-fit: contain; animation: pulse-logo 1.5s infinite; filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.3)); background-color: #fff; border-radius: 50%; padding: 0.5rem; }
+        @keyframes pulse-logo { 0% { transform: perspective(1000px) rotateY(0deg) scale(0.9); opacity: 0.8; } 50% { transform: perspective(1000px) rotateY(180deg) scale(1.1); opacity: 1; filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.8)); } 100% { transform: perspective(1000px) rotateY(360deg) scale(0.9); opacity: 0.8; } }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <img src="logo.png" alt="SKY 9 Logo Pulse" class="logo-pulse">
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav-warm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-[72px]">
+                <div class="flex items-center space-x-2">
+                    <a href="antigravity3.html" class="text-brandOrange hover:text-white transition group flex items-center font-athletic text-xl tracking-wide uppercase">
+                        <svg class="w-5 h-5 mr-1 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                        Main HQ
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-8 font-athletic text-2xl tracking-wider">
+                    <a href="#home" class="text-white hover:text-brandOrange transition">Home</a>
+                    <a href="#gallery" class="text-white hover:text-brandOrange transition">Life Here</a>
+                    <a href="#plans" class="text-white hover:text-brandOrange transition">Memberships</a>
+                    <a href="antigravity9.html#explore-gyms" class="text-white hover:text-brandOrange transition">Branches</a>
+                    <a href="#contact" class="text-white hover:text-brandOrange transition">Contact</a>
+                </div>
+                <!-- Mobile button -->
+                <div class="md:hidden flex items-center">
+                    <button class="text-brandOrange focus:outline-none">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg-warm min-h-screen flex items-center pt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right" data-aos-duration="1200">
+                    <div class="inline-block bg-brandOrange text-white font-bold px-3 py-1 mb-6 rounded text-sm uppercase tracking-widest border border-brandOrangeLight">
+                        Karimnagar Branch
+                    </div>
+                    <h1 class="font-athletic text-6xl md:text-8xl lg:text-[7rem] leading-[0.95] tracking-wide mb-6 uppercase text-white drop-shadow-lg">
+                        Karimnagar's <br>
+                        <span class="text-brandOrange">Strongest</span> <br>
+                        Community
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-300 font-sans font-light mb-10 max-w-lg">
+                        Join a fitness family that pushes you to be your absolute best. Approachable, powerful, and built for everyone.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 mb-16">
+                        <a href="#contact" class="btn-orange text-center rounded">Join the Community</a>
+                        <a href="#plans" class="btn-outline-white text-center rounded">View Memberships</a>
+                    </div>
+                </div>
+                
+                <!-- Stats Overlay -->
+                <div class="bg-cardBg/80 backdrop-blur-md p-8 rounded-xl border-l-[6px] border-brandOrange shadow-2xl lg:ml-auto max-w-sm w-full" data-aos="fade-up" data-aos-delay="300">
+                    <div class="space-y-8">
+                        <div class="flex items-center space-x-6">
+                            <div class="stat-number text-5xl">500+</div>
+                            <div class="font-bold text-gray-300 uppercase tracking-widest text-sm leading-tight">Active<br>Members</div>
+                        </div>
+                        <div class="w-full h-px bg-gray-700"></div>
+                        <div class="flex items-center space-x-6">
+                            <div class="stat-number text-5xl">10+</div>
+                            <div class="font-bold text-gray-300 uppercase tracking-widest text-sm leading-tight">Expert<br>Trainers</div>
+                        </div>
+                        <div class="w-full h-px bg-gray-700"></div>
+                        <div class="flex items-center space-x-6">
+                            <div class="stat-number text-5xl">5</div>
+                            <div class="font-bold text-gray-300 uppercase tracking-widest text-sm leading-tight">Years<br>Strong</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-24 bg-darkBase">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="zoom-in">
+                <h2 class="font-athletic text-5xl md:text-7xl uppercase tracking-wider text-white mb-4">Life at Sky 9 <span class="text-brandOrange">Karimnagar</span></h2>
+                <div class="w-24 h-2 bg-brandOrange mx-auto"></div>
+                <p class="mt-6 text-gray-400 text-lg">Real people, hard work, and supportive environments.</p>
+            </div>
+
+            <!-- Responsive Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div class="gallery-item md:col-span-2 md:row-span-2 relative group" data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover min-h-[300px]" alt="Gym View">
+                    <div class="absolute inset-0 bg-brandOrange/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                </div>
+                <div class="gallery-item relative group" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=500&auto=format&fit=crop" class="w-full h-full object-cover min-h-[200px]" alt="Plates">
+                </div>
+                <div class="gallery-item relative group" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1596357395217-80de13130e92?q=80&w=500&auto=format&fit=crop" class="w-full h-full object-cover min-h-[200px]" alt="Training">
+                </div>
+                <div class="gallery-item md:col-span-2 relative group" data-aos="fade-up" data-aos-delay="100">
+                    <video autoplay muted loop playsinline class="w-full h-full object-cover min-h-[200px] max-h-[300px]">
+                        <source src="https://cdn.pixabay.com/video/2019/11/17/29272-374668265_small.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="gallery-item relative group" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=500&auto=format&fit=crop" class="w-full h-full object-cover min-h-[250px]" alt="Cardio">
+                </div>
+                <div class="gallery-item sm:col-span-2 md:col-span-1 lg:col-span-2 relative group" data-aos="fade-up" data-aos-delay="300">
+                     <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover min-h-[250px]" alt="Community">
+                </div>
+                 <div class="gallery-item sm:col-span-2 md:col-span-2 relative group" data-aos="fade-up" data-aos-delay="100">
+                    <video autoplay muted loop playsinline class="w-full h-full object-cover min-h-[250px] max-h-[300px]">
+                        <source src="https://cdn.pixabay.com/video/2020/05/17/39327-422894107_large.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Membership Plans Section -->
+    <section id="plans" class="py-24 bg-cardBg border-t-[8px] border-brandOrange">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="font-athletic text-5xl md:text-7xl uppercase tracking-wider text-white mb-4">Select Your <span class="text-brandOrange">Plan</span></h2>
+                <p class="text-gray-400 font-medium">Simple, honest pricing. No hidden fees.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+                <!-- One Day -->
+                <div class="bg-darkBase rounded-xl p-8 border border-gray-800 hover:border-brandOrange transition-all shadow-lg text-center" data-aos="fade-up">
+                    <h3 class="font-athletic text-3xl text-white tracking-widest uppercase mb-4">One Day Pass</h3>
+                    <div class="font-athletic text-5xl text-brandOrange mb-6">₹500</div>
+                    <a href="https://wa.me/919160514555?text=Hi!%20I%20Want%20To%20Go%20With%20The%20One%20Day%20Pass." target="_blank" class="block bg-transparent border-2 border-brandOrange text-brandOrange font-bold uppercase tracking-widest py-3 rounded hover:bg-brandOrange hover:text-white transition-colors">Select</a>
+                </div>
+                <!-- Weekly -->
+                <div class="bg-darkBase rounded-xl p-8 border border-gray-800 hover:border-brandOrange transition-all shadow-lg text-center" data-aos="fade-up">
+                    <h3 class="font-athletic text-3xl text-white tracking-widest uppercase mb-4">Weekly Pass</h3>
+                    <div class="font-athletic text-5xl text-brandOrange mb-6">₹1,500</div>
+                    <a href="https://wa.me/919160514555?text=Hi!%20I%20Want%20To%20Go%20With%20The%20Weekly%20Pass." target="_blank" class="block bg-transparent border-2 border-brandOrange text-brandOrange font-bold uppercase tracking-widest py-3 rounded hover:bg-brandOrange hover:text-white transition-colors">Select</a>
+                </div>
+                <!-- Monthly -->
+                <div class="bg-darkBase rounded-xl p-8 border border-gray-800 hover:border-brandOrange transition-all shadow-lg text-center" data-aos="fade-up">
+                    <h3 class="font-athletic text-3xl text-white tracking-widest uppercase mb-4">Monthly</h3>
+                    <div class="font-athletic text-5xl text-brandOrange mb-6">₹3,000</div>
+                    <a href="https://wa.me/919160514555?text=Hi!%20I%20Want%20To%20Go%20With%20The%20Monthly%20Membership." target="_blank" class="block bg-transparent border-2 border-brandOrange text-brandOrange font-bold uppercase tracking-widest py-3 rounded hover:bg-brandOrange hover:text-white transition-colors">Select</a>
+                </div>
+                <!-- Quarterly -->
+                <div class="bg-darkBase rounded-xl p-8 border border-gray-800 hover:border-brandOrange transition-all shadow-lg text-center" data-aos="fade-up">
+                    <h3 class="font-athletic text-3xl text-white tracking-widest uppercase mb-4">Quarterly</h3>
+                    <div class="font-athletic text-5xl text-brandOrange mb-6">₹7,500</div>
+                    <a href="https://wa.me/919160514555?text=Hi!%20I%20Want%20To%20Go%20With%20The%20Quarterly%20Membership." target="_blank" class="block bg-transparent border-2 border-brandOrange text-brandOrange font-bold uppercase tracking-widest py-3 rounded hover:bg-brandOrange hover:text-white transition-colors">Select</a>
+                </div>
+                <!-- Half Yearly -->
+                <div class="bg-darkBase rounded-xl p-8 border border-gray-800 hover:border-brandOrange transition-all shadow-lg text-center md:col-span-1 lg:col-span-2" data-aos="fade-up">
+                    <h3 class="font-athletic text-3xl text-white tracking-widest uppercase mb-4">Half Yearly</h3>
+                    <div class="font-athletic text-5xl text-brandOrange mb-6">₹11,500</div>
+                    <a href="https://wa.me/919160514555?text=Hi!%20I%20Want%20To%20Go%20With%20The%20Half%20Yearly%20Membership." target="_blank" class="block bg-transparent border-2 border-brandOrange text-brandOrange font-bold uppercase tracking-widest py-3 rounded hover:bg-brandOrange hover:text-white transition-colors">Select</a>
+                </div>
+                <!-- Yearly -->
+                <div class="bg-brandOrange rounded-xl p-8 shadow-[0_0_20px_rgba(249,115,22,0.4)] text-center relative md:col-span-1 lg:col-span-2" data-aos="fade-up">
+                    <div class="absolute top-0 right-0 bg-white text-brandOrange text-xs font-black uppercase px-3 py-1 m-4 rounded">Popular</div>
+                    <h3 class="font-athletic text-3xl text-white tracking-widest uppercase mb-4">Yearly</h3>
+                    <div class="font-athletic text-5xl text-white mb-6">₹15,000</div>
+                    <a href="https://wa.me/919160514555?text=Hi!%20I%20Want%20To%20Go%20With%20The%20Yearly%20Membership." target="_blank" class="block bg-white text-brandOrange font-bold border-2 border-white uppercase tracking-widest py-3 rounded hover:bg-gray-100 transition-colors">Select</a>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto mt-8">
+                <!-- Monthly + PT -->
+                <div class="bg-darkBase rounded-xl p-8 border border-brandOrange transition-all shadow-[0_0_15px_rgba(249,115,22,0.15)] flex flex-col md:flex-row items-center justify-between" data-aos="fade-up">
+                    <div class="text-center md:text-left">
+                        <h3 class="font-athletic text-3xl text-white tracking-widest uppercase mb-1">Monthly Membership + P.T.</h3>
+                        <p class="text-brandOrange font-bold text-sm uppercase mb-4 md:mb-0">Includes 1 Hour Daily PT</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="font-athletic text-4xl text-brandOrange mb-4">₹10,000</div>
+                        <a href="https://wa.me/919160514555?text=Hi!%20I%20Want%20To%20Go%20With%20The%20Monthly%20Membership%20Plus%20PT." target="_blank" class="bg-brandOrange text-white font-bold uppercase tracking-widest px-8 py-3 rounded hover:bg-orange-600 transition-colors">Select</a>
+                    </div>
+                </div>
+                <!-- Quarterly + PT -->
+                <div class="bg-darkBase rounded-xl p-8 border border-brandOrange transition-all shadow-[0_0_15px_rgba(249,115,22,0.15)] flex flex-col md:flex-row items-center justify-between" data-aos="fade-up">
+                    <div class="text-center md:text-left">
+                        <h3 class="font-athletic text-3xl text-white tracking-widest uppercase mb-1">Quarterly Membership + P.T.</h3>
+                        <p class="text-brandOrange font-bold text-sm uppercase mb-4 md:mb-0">Includes 1 Hour Daily PT</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="font-athletic text-4xl text-brandOrange mb-4">₹24,000</div>
+                        <a href="https://wa.me/919160514555?text=Hi!%20I%20Want%20To%20Go%20With%20The%20Quarterly%20Membership%20Plus%20PT." target="_blank" class="bg-brandOrange text-white font-bold uppercase tracking-widest px-8 py-3 rounded hover:bg-orange-600 transition-colors">Select</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-[#110f0d] py-16 text-center md:text-left relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+                <!-- Branding -->
+                <div class="md:col-span-5">
+                    <h3 class="font-athletic text-4xl text-white uppercase tracking-wider mb-2">Sky 9 <span class="text-brandOrange">Karimnagar</span></h3>
+                    <p class="text-brandOrange font-bold mb-6 uppercase tracking-widest text-sm">Building Stronger Communities.</p>
+                    <p class="text-gray-400 mb-8 max-w-sm mx-auto md:mx-0">
+                        Located in the heart of Karimnagar, offering top quality equipment, dedicated trainers, and an atmosphere that demands hard work.
+                    </p>
+                    <div class="flex space-x-3 justify-center md:justify-start">
+                        <a href="#" class="w-10 h-10 bg-cardBg rounded flex items-center justify-center text-white hover:bg-brandOrange transition"><span class="font-bold text-sm">IN</span></a>
+                        <a href="#" class="w-10 h-10 bg-cardBg rounded flex items-center justify-center text-white hover:bg-brandOrange transition"><span class="font-bold text-sm">FB</span></a>
+                        <a href="#" class="w-10 h-10 bg-cardBg rounded flex items-center justify-center text-white hover:bg-brandOrange transition"><span class="font-bold text-sm">YT</span></a>
+                        <a href="#" class="w-10 h-10 bg-cardBg rounded flex items-center justify-center text-white hover:bg-green-500 transition"><span class="font-bold text-sm">WA</span></a>
+                    </div>
+                </div>
+
+                <!-- Info -->
+                <div class="md:col-span-3">
+                    <h4 class="font-bold text-white mb-6 uppercase tracking-widest border-b-2 border-brandOrange inline-block pb-1">Get In Touch</h4>
+                    <ul class="space-y-4 text-gray-400 font-medium">
+                        <li class="flex items-center justify-center md:justify-start"><span class="text-brandOrange mr-2">✆</span> <a href="tel:9160514555" class="hover:text-white transition">+91 91605 14555</a></li>
+                        <li class="flex items-center justify-center md:justify-start mt-4 mb-4">
+                            <a href="https://wa.me/919160514555?text=Hi!%20I%20would%20like%20to%20know%20more." target="_blank" class="inline-flex items-center bg-[#25D366] text-white font-bold px-4 py-2 rounded-full hover:bg-[#128C7E] transition-colors shadow-[0_0_10px_rgba(37,211,102,0.3)]">
+                                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+                                </svg>
+                                Click to Chat
+                            </a>
+                        </li>
+                        <li class="flex items-start justify-center md:justify-start"><span class="text-brandOrange mr-2 mt-1">📍</span> <span class="text-left">KAVERI SQUARE, 3-7-945, Bank Colony,<br>Vavilalapally, Karimnagar,<br>Telangana 505001</span></li>
+                        <li class="flex items-start justify-center md:justify-start mt-2">
+                            <span class="text-brandOrange mr-2 mt-1">🕒</span> 
+                            <span class="text-left font-bold text-brandOrange">Timings:<br>
+                            <span class="text-gray-400 font-normal">Monday - Saturday<br>Morning 5:00am-11:00am<br>Evening 4:00pm-9:30pm</span></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Map -->
+                <div class="md:col-span-4 rounded overflow-hidden shadow-[0_0_15px_rgba(249,115,22,0.2)] border border-brandOrange h-48 bg-cardBg flex items-center justify-center text-gray-500">
+                    <iframe src="https://maps.google.com/maps?q=KAVERI%20SQUARE,%203-7-945,%20Bank%20Colony,%20Vavilalapally,%20Karimnagar,%20Telangana%20505001&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+            
+            <div class="mt-16 pt-8 border-t border-gray-800 text-center text-sm font-bold text-gray-600 uppercase tracking-widest">
+                &copy; 2026 Sky 9 Fitness Karimnagar.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true });
+        
+        // Hide preloader
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                preloader.style.opacity = '0';
+                setTimeout(() => { preloader.style.display = 'none'; }, 600);
+            }
+        });
+    </script>
+</body>
+</html>

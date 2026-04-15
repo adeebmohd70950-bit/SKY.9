@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sky 9 Fitness - Tolichowki</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;500;600;700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#030712', // deep blue-black
+                        panel: '#0f172a',
+                        neonBlue: '#3b82f6',
+                        neonGreen: '#22c55e'
+                    },
+                    fontFamily: {
+                        sans: ['Roboto', 'sans-serif'],
+                        display: ['Teko', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        body { background-color: theme('colors.dark'); color: #e2e8f0; overflow-x: hidden; }
+        
+        .diagonal-hero {
+            background-color: theme('colors.dark');
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            padding-bottom: 5vw;
+        }
+
+        .hero-img-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(3,7,18,0.95), rgba(59,130,246,0.3)), url('https://images.unsplash.com/photo-1574680178050-55c6c043e74c?q=80&w=2069&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.8;
+            mix-blend-mode: luminosity;
+        }
+
+        .text-neon-blue {
+            text-shadow: 0 0 10px rgba(59,130,246,0.8), 0 0 20px rgba(59,130,246,0.5);
+            color: #fff;
+        }
+
+        .text-neon-green {
+            text-shadow: 0 0 10px rgba(34,197,94,0.8), 0 0 20px rgba(34,197,94,0.5);
+            color: theme('colors.neonGreen');
+        }
+
+        .btn-neon {
+            background: transparent;
+            color: theme('colors.neonBlue');
+            border: 2px solid theme('colors.neonBlue');
+            box-shadow: 0 0 10px rgba(59,130,246,0.5), inset 0 0 10px rgba(59,130,246,0.3);
+            text-transform: uppercase;
+            font-family: theme('fontFamily.display');
+            font-size: 1.5rem;
+            line-height: 1;
+            padding: 0.75rem 2.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            z-index: 1;
+        }
+        .btn-neon:hover {
+            color: #fff;
+            background: theme('colors.neonBlue');
+            box-shadow: 0 0 25px rgba(59,130,246,0.8);
+        }
+
+        .btn-neon-green {
+            background: theme('colors.neonGreen');
+            color: theme('colors.dark');
+            border: 2px solid theme('colors.neonGreen');
+            box-shadow: 0 0 15px rgba(34,197,94,0.6);
+            text-transform: uppercase;
+            font-family: theme('fontFamily.display');
+            font-size: 1.5rem;
+            line-height: 1;
+            padding: 0.75rem 2.5rem;
+            transition: all 0.3s ease;
+            font-weight: 700;
+        }
+        .btn-neon-green:hover {
+            background: #fff;
+            color: theme('colors.dark');
+            border-color: #fff;
+            box-shadow: 0 0 25px rgba(255,255,255,0.8);
+        }
+
+        /* Gallery Grid */
+        .neon-border-grid img, .neon-border-grid video {
+            border: 2px solid transparent;
+            transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+        .neon-border-grid .group:hover img, .neon-border-grid .group:hover video {
+            border-color: theme('colors.neonGreen');
+            box-shadow: 0 0 20px rgba(34,197,94,0.4);
+            transform: scale(1.02);
+            z-index: 10;
+        }
+
+        /* Filter Tabs */
+        .filter-btn {
+            background: theme('colors.panel');
+            color: #94a3b8;
+            font-family: theme('fontFamily.display');
+            font-size: 1.25rem;
+            border: 1px solid #334155;
+            transition: all 0.2s;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            color: theme('colors.neonBlue');
+            border-color: theme('colors.neonBlue');
+            box-shadow: 0 0 10px rgba(59,130,246,0.3);
+        }
+
+        /* Skewed Card Design */
+        .plan-card {
+            background: theme('colors.panel');
+            border-top: 4px solid transparent;
+            transform: skewX(-3deg);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .plan-card:hover {
+            transform: skewX(-3deg) translateY(-10px);
+        }
+        .plan-card-content {
+            transform: skewX(3deg); /* Undo skew for text */
+        }
+        .plan-card.pro {
+            border-top-color: theme('colors.neonGreen');
+            box-shadow: 0 10px 30px rgba(34,197,94,0.15);
+        }
+        .plan-card.pro:hover {
+            box-shadow: 0 15px 40px rgba(34,197,94,0.3);
+        }
+        .plan-card.starter { border-top-color: theme('colors.neonBlue'); }
+        .plan-card.starter:hover { box-shadow: 0 15px 40px rgba(59,130,246,0.3); }
+
+        .glass-nav { background: rgba(3, 7, 18, 0.9); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(59,130,246,0.2); }
+        
+        /* Preloader Styles */
+        #preloader { position: fixed; inset: 0; width: 100vw; height: 100vh; background-color: theme('colors.dark'); z-index: 99999; display: flex; justify-content: center; align-items: center; transition: opacity 0.6s ease; }
+        .logo-pulse { width: 100px; height: auto; object-fit: contain; animation: pulse-logo 1.5s infinite; filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.3)); background-color: #fff; border-radius: 50%; padding: 0.5rem; }
+        @keyframes pulse-logo { 0% { transform: perspective(1000px) rotateY(0deg) scale(0.9); opacity: 0.8; } 50% { transform: perspective(1000px) rotateY(180deg) scale(1.1); opacity: 1; filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.8)); } 100% { transform: perspective(1000px) rotateY(360deg) scale(0.9); opacity: 0.8; } }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <img src="logo.png" alt="SKY 9 Logo Pulse" class="logo-pulse">
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center space-x-2">
+                    <a href="antigravity3.html" class="text-neonBlue hover:text-white transition group flex items-center font-display text-xl tracking-wider">
+                        <svg class="w-5 h-5 mr-1 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                        MAIN SITE
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-8 font-display text-2xl tracking-wide">
+                    <a href="#home" class="text-slate-300 hover:text-neonGreen transition">HOME</a>
+                    <a href="#gallery" class="text-slate-300 hover:text-neonGreen transition">GALLERY</a>
+                    <a href="#plans" class="text-slate-300 hover:text-neonGreen transition">MEMBERSHIP</a>
+                    <a href="antigravity9.html#explore-gyms" class="text-slate-300 hover:text-neonGreen transition">BRANCHES</a>
+                    <a href="#contact" class="text-slate-300 hover:text-neonGreen transition">CONTACT</a>
+                </div>
+                <!-- Mobile button -->
+                <div class="md:hidden flex items-center">
+                    <button class="text-neonBlue focus:outline-none">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative diagonal-hero min-h-[90vh] flex items-center">
+        <div class="hero-img-overlay"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-dark via-transparent to-transparent"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-20">
+            <div class="max-w-3xl" data-aos="fade-right" data-aos-duration="1000">
+                <div class="inline-flex items-center space-x-2 mb-6">
+                    <span class="w-3 h-3 rounded-full bg-neonGreen animate-pulse shadow-[0_0_10px_#22c55e]"></span>
+                    <span class="font-display text-2xl text-neonGreen tracking-widest uppercase">Tolichowki Branch</span>
+                </div>
+                <!-- Neon glow headline -->
+                <h1 class="font-display text-7xl md:text-9xl font-bold uppercase leading-none tracking-tight mb-8">
+                    <span class="text-white">NO LIMITS.</span><br/>
+                    <span class="text-neon-blue">NO EXCUSES.</span>
+                </h1>
+                <p class="text-lg md:text-xl text-slate-300 mb-10 max-w-xl border-l-4 border-neonBlue pl-4">
+                    Urban energy meets raw iron. Welcome to the grittiest, most high-octane training facility in Tolichowki.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#plans" class="btn-neon-green text-center">Start Today</a>
+                    <a href="#plans" class="btn-neon text-center">See Plans</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-dark relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div data-aos="fade-up">
+                    <h2 class="font-display text-5xl md:text-6xl uppercase tracking-wide text-white mb-2">Train Hard at <span class="text-neonGreen">Tolichowki</span></h2>
+                    <p class="text-slate-400">Pure grit, pure gains. Check out the floor.</p>
+                </div>
+
+            </div>
+
+            <!-- Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 auto-rows-[200px] gap-4 neon-border-grid">
+                <div class="col-span-2 row-span-2 group relative overflow-hidden bg-panel" data-aos="zoom-in">
+                    <img src="toli-gym-1.jpg" alt="Tolichowki Gym floor" class="w-full h-full object-cover grayscale group-hover:grayscale-0">
+                </div>
+                <div class="col-span-1 row-span-1 group relative overflow-hidden bg-panel" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="toli-gym-2.jpg" alt="Tolichowki Equipment" class="w-full h-full object-cover mix-blend-luminosity group-hover:mix-blend-normal">
+                </div>
+                <div class="col-span-1 row-span-2 group relative overflow-hidden bg-panel" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="toli-gym-4.jpg" alt="Tolichowki Gym Training" class="w-full h-full object-cover grayscale group-hover:grayscale-0">
+                </div>
+                <div class="col-span-1 row-span-1 group relative overflow-hidden bg-panel" data-aos="zoom-in" data-aos-delay="50">
+                    <img src="toli-gym-3.jpg" alt="Tolichowki Weights" class="w-full h-full object-cover grayscale group-hover:grayscale-0">
+                </div>
+                <div class="col-span-1 row-span-1 group relative overflow-hidden bg-panel" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=500&auto=format&fit=crop" alt="Plates" class="w-full h-full object-cover grayscale group-hover:grayscale-0">
+                </div>
+                <div class="col-span-2 row-span-1 group relative overflow-hidden bg-panel" data-aos="zoom-in" data-aos-delay="150">
+                    <img src="toli-gym-5.jpg" alt="Tolichowki Gym Workouts" class="w-full h-full object-cover grayscale group-hover:grayscale-0">
+                </div>
+                 <div class="col-span-1 row-span-1 group relative overflow-hidden bg-panel" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=500&auto=format&fit=crop" alt="Machine" class="w-full h-full object-cover mix-blend-luminosity group-hover:mix-blend-normal">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Membership Plans -->
+    <section id="plans" class="py-24 bg-dark relative">
+        <!-- Decor pattern -->
+        <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(circle at 2px 2px, #3b82f6 1px, transparent 0); background-size: 32px 32px;"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="font-display text-5xl md:text-7xl uppercase tracking-wide text-white mb-2">Join the <span class="text-neon-blue text-shadow">Squad</span></h2>
+                <p class="text-slate-400 font-medium">No hidden fees. Just hardcore results.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 md:px-0">
+                
+                <!-- One Day Pass -->
+                <div class="plan-card starter p-8" data-aos="fade-up" data-aos-delay="100">
+                    <div class="plan-card-content flex flex-col h-full">
+                        <div class="flex items-end justify-between mb-6">
+                            <h3 class="font-display text-4xl uppercase text-white">One Day Pass</h3>
+                            <svg class="w-10 h-10 text-neonBlue opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <div class="font-display text-6xl text-white leading-none mb-2">₹500</div>
+                        <div class="text-slate-500 font-bold mb-8 uppercase text-sm tracking-wider">Pass</div>
+                        <ul class="space-y-4 text-slate-300 font-medium flex-1">
+                            <li class="flex items-center"><span class="w-2 h-2 bg-neonBlue mr-3 rounded-full"></span> 1 Day Open Gym</li>
+                        </ul>
+                        <a href="https://wa.me/919640640580?text=Hi!%20I%20Want%20To%20Go%20With%20The%20One%20Day%20Pass." target="_blank" class="btn-neon text-center mt-8 block hover:bg-neonBlue">Select Plan</a>
+                    </div>
+                </div>
+
+                <!-- Weekly Pass -->
+                <div class="plan-card starter p-8" data-aos="fade-up" data-aos-delay="150">
+                    <div class="plan-card-content flex flex-col h-full">
+                        <div class="flex items-end justify-between mb-6">
+                            <h3 class="font-display text-4xl uppercase text-white">Weekly Pass</h3>
+                            <svg class="w-10 h-10 text-neonBlue opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <div class="font-display text-6xl text-white leading-none mb-2">₹1,500</div>
+                        <div class="text-slate-500 font-bold mb-8 uppercase text-sm tracking-wider">Pass</div>
+                        <ul class="space-y-4 text-slate-300 font-medium flex-1">
+                            <li class="flex items-center"><span class="w-2 h-2 bg-neonBlue mr-3 rounded-full"></span> 7 Days Access</li>
+                        </ul>
+                        <a href="https://wa.me/919640640580?text=Hi!%20I%20Want%20To%20Go%20With%20The%20Weekly%20Pass." target="_blank" class="btn-neon text-center mt-8 block hover:bg-neonBlue">Select Plan</a>
+                    </div>
+                </div>
+
+                <!-- Monthly -->
+                <div class="plan-card starter p-8" data-aos="fade-up" data-aos-delay="200">
+                    <div class="plan-card-content flex flex-col h-full">
+                        <div class="flex items-end justify-between mb-6">
+                            <h3 class="font-display text-4xl uppercase text-white">Monthly</h3>
+                            <svg class="w-10 h-10 text-neonBlue opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <div class="font-display text-6xl text-white leading-none mb-2">₹5,000</div>
+                        <div class="text-slate-500 font-bold mb-8 uppercase text-sm tracking-wider">Membership</div>
+                        <ul class="space-y-4 text-slate-300 font-medium flex-1">
+                            <li class="flex items-center"><span class="w-2 h-2 bg-neonBlue mr-3 rounded-full"></span> 1 Month Access</li>
+                        </ul>
+                        <a href="https://wa.me/919640640580?text=Hi!%20I%20Want%20To%20Go%20With%20The%20Monthly%20Membership." target="_blank" class="btn-neon text-center mt-8 block hover:bg-neonBlue">Select Plan</a>
+                    </div>
+                </div>
+
+                <!-- Quarterly -->
+                <div class="plan-card starter p-8" data-aos="fade-up" data-aos-delay="250">
+                    <div class="plan-card-content flex flex-col h-full">
+                        <div class="flex items-end justify-between mb-6">
+                            <h3 class="font-display text-4xl uppercase text-white">Quarterly</h3>
+                            <svg class="w-10 h-10 text-neonBlue opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <div class="font-display text-6xl text-white leading-none mb-2">₹10,000</div>
+                        <div class="text-slate-500 font-bold mb-8 uppercase text-sm tracking-wider">Membership</div>
+                        <ul class="space-y-4 text-slate-300 font-medium flex-1">
+                            <li class="flex items-center"><span class="w-2 h-2 bg-neonBlue mr-3 rounded-full"></span> 3 Months Access</li>
+                        </ul>
+                        <a href="https://wa.me/919640640580?text=Hi!%20I%20Want%20To%20Go%20With%20The%20Quarterly%20Membership." target="_blank" class="btn-neon text-center mt-8 block hover:bg-neonBlue">Select Plan</a>
+                    </div>
+                </div>
+
+                <!-- Half Yearly -->
+                <div class="plan-card starter p-8" data-aos="fade-up" data-aos-delay="300">
+                    <div class="plan-card-content flex flex-col h-full">
+                        <div class="flex items-end justify-between mb-6">
+                            <h3 class="font-display text-4xl uppercase text-white">Half Yearly</h3>
+                            <svg class="w-10 h-10 text-neonBlue opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <div class="font-display text-6xl text-white leading-none mb-2">₹15,000</div>
+                        <div class="text-slate-500 font-bold mb-8 uppercase text-sm tracking-wider">Membership</div>
+                        <ul class="space-y-4 text-slate-300 font-medium flex-1">
+                            <li class="flex items-center"><span class="w-2 h-2 bg-neonBlue mr-3 rounded-full"></span> 6 Months Access</li>
+                        </ul>
+                        <a href="https://wa.me/919640640580?text=Hi!%20I%20Want%20To%20Go%20With%20The%20Half%20Yearly%20Membership." target="_blank" class="btn-neon text-center mt-8 block hover:bg-neonBlue">Select Plan</a>
+                    </div>
+                </div>
+
+                <!-- Yearly -->
+                <div class="plan-card pro p-8 relative" data-aos="fade-up" data-aos-delay="350">
+                     <div class="absolute top-0 right-0 bg-neonGreen text-dark font-bold px-4 py-1 translate-x-2 -translate-y-2 uppercase tracking-tight skew-x-[3deg]">Best Value</div>
+                    <div class="plan-card-content flex flex-col h-full">
+                        <div class="flex items-end justify-between mb-6">
+                            <h3 class="font-display text-4xl uppercase text-white">Yearly</h3>
+                            <svg class="w-10 h-10 text-neonGreen opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        </div>
+                        <div class="font-display text-6xl text-white leading-none mb-2 text-neon-green">₹24,000</div>
+                        <div class="text-slate-500 font-bold mb-8 uppercase text-sm tracking-wider">Membership</div>
+                        <ul class="space-y-4 text-slate-300 font-medium flex-1">
+                            <li class="flex items-center"><span class="w-2 h-2 bg-neonGreen mr-3 rounded-full shadow-[0_0_8px_#22c55e]"></span> 12 Months Access</li>
+                        </ul>
+                        <a href="https://wa.me/919640640580?text=Hi!%20I%20Want%20To%20Go%20With%20The%20Yearly%20Membership." target="_blank" class="btn-neon-green text-center mt-8 block hover:bg-white text-dark">Select Plan</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-[#030712] py-16 border-t-[3px] border-neonBlue relative overflow-hidden">
+        <!-- Grunge/Neon footer element -->
+        <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-neonBlue opacity-10 rounded-full blur-[100px]"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
+                
+                <!-- Branding -->
+                <div class="md:col-span-2">
+                    <h3 class="font-display text-5xl uppercase tracking-wider text-white mb-2">SKY 9 <span class="text-neonGreen">FITNESS</span></h3>
+                    <p class="text-slate-400 font-medium mb-6 uppercase tracking-wider">Tolichowki Branch</p>
+                    <p class="text-slate-500 text-sm max-w-sm mx-auto md:mx-0">
+                        The rawest gym environment in the city. High energy, heavy weights, zero excuses.
+                    </p>
+                    
+                    <div class="flex space-x-4 mt-8 justify-center md:justify-start">
+                        <!-- Socials -->
+                        <a href="#" class="w-12 h-12 bg-panel flex items-center justify-center rounded border border-slate-800 text-slate-400 hover:text-neonBlue hover:border-neonBlue hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] transition-all">IG</a>
+                        <a href="#" class="w-12 h-12 bg-panel flex items-center justify-center rounded border border-slate-800 text-slate-400 hover:text-neonBlue hover:border-neonBlue hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] transition-all">FB</a>
+                        <a href="#" class="w-12 h-12 bg-panel flex items-center justify-center rounded border border-slate-800 text-slate-400 hover:text-neonBlue hover:border-neonBlue hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] transition-all">YT</a>
+                    </div>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="md:col-span-1">
+                    <h4 class="font-display text-2xl text-white mb-6 uppercase border-l-4 border-neonBlue pl-3">Contact</h4>
+                    <ul class="space-y-4 text-slate-400 font-medium text-sm">
+                        <li class="hover:text-neonGreen transition cursor-pointer"><a href="tel:9640640580">Cell: 96406 40580</a></li>
+                        <li class="pt-2">Address: MCH Colony, Salarjung Colony, Nizam Colony,<br>Toli Chowki, Hyderabad, Telangana 500008.</li>
+                        <li class="pt-2 text-neonGreen font-bold tracking-wide">
+                            Timings:<br>
+                            <span class="text-slate-400 font-normal">Monday-Saturday : 6:00am-11:30pm</span><br>
+                            <span class="text-slate-400 font-normal">Sunday : 7:00am-3pm</span>
+                        </li>
+                    </ul>
+                    <a href="https://wa.me/919640640580?text=Hi!%20I%20want%20to%20get%20started." target="_blank" class="inline-flex items-center justify-center mt-6 bg-[#25D366] text-white font-bold py-2 px-4 rounded hover:bg-green-600 transition shadow-[0_0_10px_rgba(37,211,102,0.5)]">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 21.002a9.92 9.92 0 0 1-5.064-1.385l-.36-.214-3.75.98 1.003-3.655-.235-.373A9.914 9.914 0 0 1 2.062 11c0-5.463 4.453-9.912 9.932-9.912 2.645 0 5.132 1.03 7 2.9A9.878 9.878 0 0 1 21.94 11c0 5.46-4.453 9.904-9.909 9.902zM12.031 3.067C7.644 3.067 4.04 6.666 4.04 11a7.925 7.925 0 0 0 1.258 4.305l.394.623L4.85 18.99l3.141-.823.606.353A7.942 7.942 0 0 0 12.03 20.02c4.385.002 7.933-3.593 7.934-7.98a7.923 7.923 0 0 0-2.333-5.611A7.886 7.886 0 0 0 12.031 3.067z"/><path d="M16.32 13.434c-.234-.117-1.393-.687-1.609-.766-.216-.078-.374-.117-.53.117-.156.234-.608.766-.745.922-.138.156-.276.175-.51.058a6.386 6.386 0 0 1-1.879-1.157 7.026 7.026 0 0 1-1.3-1.625c-.138-.234-.015-.36.102-.477.106-.105.234-.273.35-.41.117-.137.156-.234.234-.39a.534.534 0 0 0-.025-.506c-.058-.117-.53-1.278-.727-1.748-.19-.46-.388-.399-.53-.406a4.845 4.845 0 0 0-.452-.008c-.156 0-.41.058-.625.293-.215.234-.82.8-.82 1.95s.84 2.261.957 2.417c.117.156 1.642 2.508 3.985 3.522.558.241.994.385 1.332.493.56.178 1.07.152 1.472.093.45-.067 1.393-.568 1.589-1.118.195-.55.195-1.021.137-1.118-.059-.098-.215-.156-.45-.273z"/></svg>
+                        Quick WhatsApp
+                    </a>
+                </div>
+
+                <!-- Map -->
+                <div class="md:col-span-1">
+                     <h4 class="font-display text-2xl text-white mb-6 uppercase border-l-4 border-neonGreen pl-3">Map</h4>
+                     <div class="w-full h-48 bg-panel border-2 border-slate-800 rounded overflow-hidden shadow-[0_0_15px_rgba(34,197,94,0.15)] flex items-center justify-center">
+                        <iframe src="https://maps.google.com/maps?q=MCH%20Colony,%20Toli%20Chowki,%20Hyderabad,%20Telangana%20500008&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                     </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 pt-8 border-t border-slate-800 text-center text-sm font-bold text-slate-600 uppercase tracking-widest">
+                &copy; 2026 Sky 9 Fitness Tolichowki.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true });
+        
+        // Hide preloader
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                preloader.style.opacity = '0';
+                setTimeout(() => { preloader.style.display = 'none'; }, 600);
+            }
+        });
+    </script>
+</body>
+</html>

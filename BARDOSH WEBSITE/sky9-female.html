@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sky 9 Female Fitness</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#0a0508',
+                        light: '#fff5f7',
+                        primary: '#b34766',
+                        secondary: '#d4af37', // Gold
+                        card: '#1a0d14'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        body { background-color: theme('colors.dark'); color: theme('colors.light'); overflow-x: hidden; }
+        .hero-bg {
+            background-image: linear-gradient(to bottom, rgba(10,5,8,0.3), rgba(10,5,8,0.9)), url('https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+        .masonry {
+            column-count: 1;
+            column-gap: 1.5rem;
+        }
+        @media (min-width: 768px) { .masonry { column-count: 2; } }
+        @media (min-width: 1024px) { .masonry { column-count: 3; } }
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+        }
+        .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .hover-lift:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(179,71,102,0.3); }
+        .glowing-border { box-shadow: 0 0 15px rgba(212,175,55,0.4), inset 0 0 10px rgba(212,175,55,0.2); border: 1px solid theme('colors.secondary'); }
+        .btn-primary { background-color: theme('colors.primary'); color: theme('colors.light'); border: 1px solid transparent; }
+        .btn-primary:hover { background-color: transparent; border-color: theme('colors.primary'); color: theme('colors.primary'); }
+        .btn-gold { background-color: transparent; border: 1px solid theme('colors.secondary'); color: theme('colors.secondary'); }
+        .btn-gold:hover { background-color: theme('colors.secondary'); color: theme('colors.dark'); }
+        .glass-nav { background: rgba(10, 5, 8, 0.8); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(179,71,102,0.2); }
+        
+        /* Preloader Styles */
+        #preloader { position: fixed; inset: 0; width: 100vw; height: 100vh; background-color: theme('colors.dark'); z-index: 99999; display: flex; justify-content: center; align-items: center; transition: opacity 0.6s ease; }
+        .logo-pulse { width: 100px; height: auto; object-fit: contain; animation: pulse-logo 1.5s infinite; filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.3)); background-color: #fff; border-radius: 50%; padding: 0.5rem; }
+        @keyframes pulse-logo { 0% { transform: perspective(1000px) rotateY(0deg) scale(0.9); opacity: 0.8; } 50% { transform: perspective(1000px) rotateY(180deg) scale(1.1); opacity: 1; filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.8)); } 100% { transform: perspective(1000px) rotateY(360deg) scale(0.9); opacity: 0.8; } }
+    </style>
+</head>
+<body class="antialiased font-sans">
+    
+    <!-- Preloader -->
+    <div id="preloader">
+        <img src="logo.png" alt="SKY 9 Logo Pulse" class="logo-pulse">
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center space-x-2">
+                    <a href="antigravity3.html" class="text-primary hover:text-white transition group flex items-center text-sm font-medium">
+                        <svg class="w-4 h-4 mr-1 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                        Main Site
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-sm font-medium hover:text-primary transition">Home</a>
+                    <a href="#gallery" class="text-sm font-medium hover:text-primary transition">Gallery</a>
+                    <a href="#plans" class="text-sm font-medium hover:text-primary transition">Membership</a>
+                    <a href="antigravity9.html#explore-gyms" class="text-sm font-medium hover:text-primary transition">Branches</a>
+                    <a href="#contact" class="text-sm font-medium hover:text-primary transition">Contact</a>
+                </div>
+                <!-- Mobile button -->
+                <div class="md:hidden flex items-center">
+                    <button class="text-white hover:text-primary focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg min-h-screen flex text-center flex-col items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-primary/10 animate-[pulse_4s_ease-in-out_infinite]"></div>
+        <div class="relative z-10 px-4 max-w-4xl" data-aos="fade-up" data-aos-duration="1500">
+            <div class="inline-block px-4 py-1 rounded-full border border-secondary text-secondary text-xs uppercase tracking-widest mb-6 font-medium bg-dark/50 backdrop-blur-sm">
+                Women Only Space
+            </div>
+            <h1 class="text-5xl md:text-7xl font-serif font-bold mb-6 text-white leading-tight">
+                Train. Transform. <span class="text-primary italic font-normal">Thrive.</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-300 font-light max-w-2xl mx-auto mb-10">
+                A premium, empowering environment crafted exclusively for women to elevate their strength, confidence, and wellness.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="#plans" class="btn-primary w-full sm:w-auto px-8 py-3 rounded-full font-medium tracking-wide transition-all shadow-[0_4px_15px_rgba(179,71,102,0.4)]">Join Now</a>
+                <a href="#plans" class="btn-gold w-full sm:w-auto px-8 py-3 rounded-full font-medium tracking-wide transition-all">View Plans</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-24 bg-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-5xl font-serif font-bold text-white mb-4">Inside Sky 9 Female Fitness</h2>
+                <div class="w-16 h-1 bg-primary mx-auto"></div>
+                <p class="mt-4 text-gray-400 font-light">Explore our state-of-the-art facilities designed for elegance and functionality.</p>
+            </div>
+
+            <div class="masonry">
+                <!-- Image 1 -->
+                <div class="masonry-item relative group overflow-hidden rounded-lg" data-aos="fade-up">
+                    <img src="female-gym-1.jpg" alt="Squat Racks" class="w-full h-auto object-cover group-hover:scale-110 transition duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <p class="text-white font-serif text-xl">Strength & Conditioning</p>
+                    </div>
+                </div>
+                <!-- Image 2 -->
+                <div class="masonry-item relative group overflow-hidden rounded-lg" data-aos="fade-up" data-aos-delay="200">
+                    <img src="female-gym-2.jpg" alt="Cardio Equipment" class="w-full h-auto object-cover group-hover:scale-110 transition duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <p class="text-white font-serif text-xl">Premium Cardio Zone</p>
+                    </div>
+                </div>
+                <!-- Image 3 (Vertical) -->
+                <div class="masonry-item relative group overflow-hidden rounded-lg" data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?q=80&w=800&auto=format&fit=crop" alt="Dumbbells" class="w-full h-auto object-cover group-hover:scale-110 transition duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <p class="text-white font-serif text-xl">Free Weights</p>
+                    </div>
+                </div>
+                <!-- Image 4 -->
+                <div class="masonry-item relative group overflow-hidden rounded-lg" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1550345332-09e3ac987658?q=80&w=800&auto=format&fit=crop" alt="Locker room" class="w-full h-auto object-cover group-hover:scale-110 transition duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <p class="text-white font-serif text-xl">Luxury Lockers & Steam Room</p>
+                    </div>
+                </div>
+                <!-- Image 5 -->
+                 <div class="masonry-item relative group overflow-hidden rounded-lg" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop" alt="Personal Training" class="w-full h-auto object-cover group-hover:scale-110 transition duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6">
+                        <p class="text-white font-serif text-xl">Personal Training</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Membership Plans Section -->
+    <section id="plans" class="py-24 bg-card relative">
+        <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-5xl font-serif font-bold text-white mb-4">Membership Plans</h2>
+                <div class="w-16 h-1 bg-primary mx-auto mb-4"></div>
+                <p class="text-gray-400 font-light">Choose the plan that fits your journey</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- One Day Pass -->
+                <div class="bg-gradient-to-br from-[#1a0d14] to-dark border border-primary/20 p-8 rounded-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_10px_25px_rgba(212,175,55,0.2)] flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+                    <div>
+                        <h3 class="text-xl font-serif font-bold text-white mb-4 text-center">One Day Pass</h3>
+                        <div class="text-4xl font-bold text-secondary text-center mb-8">₹500/-</div>
+                    </div>
+                    <a href="https://wa.me/919885716555?text=Hi%2C%20I%20Want%20To%20Go%20With%20The%20One%20Day%20Pass%20Plan%20And%20I%20Want%20To%20Know%20If%20there%20Are%20Any%20Offers%20or%20Discounts%20Applicable%20Currently." target="_blank" class="block w-full text-center py-3 border border-primary text-primary rounded-full font-medium transition-all hover:bg-primary hover:text-white hover:shadow-[0_0_15px_rgba(179,71,102,0.6)]">Join Now</a>
+                </div>
+
+                <!-- Weekly Pass -->
+                <div class="bg-gradient-to-br from-[#1a0d14] to-dark border border-primary/20 p-8 rounded-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_10px_25px_rgba(212,175,55,0.2)] flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
+                    <div>
+                        <h3 class="text-xl font-serif font-bold text-white mb-4 text-center">Weekly Pass</h3>
+                        <div class="text-4xl font-bold text-secondary text-center mb-8">₹1,500/-</div>
+                    </div>
+                    <a href="https://wa.me/919885716555?text=Hi%2C%20I%20Want%20To%20Go%20With%20The%20Weekly%20Pass%20Plan%20And%20I%20Want%20To%20Know%20If%20there%20Are%20Any%20Offers%20or%20Discounts%20Applicable%20Currently." target="_blank" class="block w-full text-center py-3 border border-primary text-primary rounded-full font-medium transition-all hover:bg-primary hover:text-white hover:shadow-[0_0_15px_rgba(179,71,102,0.6)]">Join Now</a>
+                </div>
+
+                <!-- Monthly Membership -->
+                <div class="bg-gradient-to-br from-[#1a0d14] to-dark border border-primary/20 p-8 rounded-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_10px_25px_rgba(212,175,55,0.2)] flex flex-col justify-between" data-aos="fade-up" data-aos-delay="300">
+                    <div>
+                        <h3 class="text-xl font-serif font-bold text-white mb-4 text-center">Monthly Membership</h3>
+                        <div class="text-4xl font-bold text-secondary text-center mb-8">₹4,000/-</div>
+                    </div>
+                    <a href="https://wa.me/919885716555?text=Hi%2C%20I%20Want%20To%20Go%20With%20The%20Monthly%20Membership%20Plan%20And%20I%20Want%20To%20Know%20If%20there%20Are%20Any%20Offers%20or%20Discounts%20Applicable%20Currently." target="_blank" class="block w-full text-center py-3 border border-primary text-primary rounded-full font-medium transition-all hover:bg-primary hover:text-white hover:shadow-[0_0_15px_rgba(179,71,102,0.6)]">Join Now</a>
+                </div>
+
+                <!-- Quarterly Membership -->
+                <div class="bg-gradient-to-br from-[#1a0d14] to-dark border border-primary/20 p-8 rounded-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_10px_25px_rgba(212,175,55,0.2)] flex flex-col justify-between" data-aos="fade-up" data-aos-delay="400">
+                    <div>
+                        <h3 class="text-xl font-serif font-bold text-white mb-4 text-center">Quarterly Membership</h3>
+                        <div class="text-4xl font-bold text-secondary text-center mb-8">₹8,000/-</div>
+                    </div>
+                    <a href="https://wa.me/919885716555?text=Hi%2C%20I%20Want%20To%20Go%20With%20The%20Quarterly%20Membership%20Plan%20And%20I%20Want%20To%20Know%20If%20there%20Are%20Any%20Offers%20or%20Discounts%20Applicable%20Currently." target="_blank" class="block w-full text-center py-3 border border-primary text-primary rounded-full font-medium transition-all hover:bg-primary hover:text-white hover:shadow-[0_0_15px_rgba(179,71,102,0.6)]">Join Now</a>
+                </div>
+
+                <!-- Half Yearly Membership -->
+                <div class="relative bg-gradient-to-br from-[#2a131f] to-dark border border-primary shadow-[0_0_20px_rgba(179,71,102,0.4)] p-8 rounded-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_10px_35px_rgba(212,175,55,0.3)] flex flex-col justify-between" data-aos="fade-up" data-aos-delay="500">
+                    <div class="absolute -top-4 right-4 bg-primary text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wider">Most Popular</div>
+                    <div>
+                        <h3 class="text-xl font-serif font-bold text-white mb-4 text-center mt-2">Half Yearly Membership</h3>
+                        <div class="text-4xl font-bold text-secondary text-center mb-8">₹12,000/-</div>
+                    </div>
+                    <a href="https://wa.me/919885716555?text=Hi%2C%20I%20Want%20To%20Go%20With%20The%20Half%20Yearly%20Membership%20Plan%20And%20I%20Want%20To%20Know%20If%20there%20Are%20Any%20Offers%20or%20Discounts%20Applicable%20Currently." target="_blank" class="block w-full text-center py-3 bg-primary text-white rounded-full font-medium transition-all hover:bg-transparent hover:text-primary border border-primary hover:shadow-[0_0_15px_rgba(179,71,102,0.6)]">Join Now</a>
+                </div>
+
+                <!-- Yearly Membership -->
+                <div class="relative bg-gradient-to-br from-[#1f1a10] to-dark border border-secondary shadow-[0_0_20px_rgba(212,175,55,0.3)] p-8 rounded-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_10px_35px_rgba(212,175,55,0.5)] flex flex-col justify-between" data-aos="fade-up" data-aos-delay="600">
+                    <div class="absolute -top-4 right-4 bg-secondary text-dark text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wider">Best Value</div>
+                    <div>
+                        <h3 class="text-xl font-serif font-bold text-white mb-4 text-center mt-2">Yearly Membership</h3>
+                        <div class="text-4xl font-bold text-secondary text-center mb-8">₹20,000/-</div>
+                    </div>
+                    <a href="https://wa.me/919885716555?text=Hi%2C%20I%20Want%20To%20Go%20With%20The%20Yearly%20Membership%20Plan%20And%20I%20Want%20To%20Know%20If%20there%20Are%20Any%20Offers%20or%20Discounts%20Applicable%20Currently." target="_blank" class="block w-full text-center py-3 border border-secondary text-secondary rounded-full font-medium transition-all hover:bg-secondary hover:text-dark hover:shadow-[0_0_15px_rgba(212,175,55,0.6)]">Join Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-dark py-16 border-t border-gray-800 text-center md:text-left">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <!-- Branding -->
+                <div>
+                    <h3 class="text-2xl font-serif font-bold text-white mb-4">Sky 9 Female Fitness</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">Empowering women through fitness, wellness, and a supportive community in a luxurious environment.</p>
+                    <div class="flex space-x-4 justify-center md:justify-start">
+                        <a href="#" class="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:text-primary hover:border-primary transition"><span class="font-bold">IG</span></a>
+                        <a href="#" class="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:text-primary hover:border-primary transition"><span class="font-bold">FB</span></a>
+                        <a href="#" class="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:text-primary hover:border-primary transition"><span class="font-bold">YT</span></a>
+                        <a href="#" class="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:text-green-500 hover:border-green-500 transition"><span class="font-bold">WA</span></a>
+                    </div>
+                </div>
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-lg font-serif font-semibold text-white mb-4 uppercase tracking-wider text-secondary">Contact Us</h3>
+                    <ul class="text-gray-400 text-sm space-y-3">
+                        <li class="flex items-center justify-center md:justify-start"><svg class="w-5 h-5 mr-3 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg> <a href="tel:9885716555" class="hover:text-primary transition">+91 98857 16555</a></li>
+                        <li class="flex justify-center md:justify-start mt-4 mb-4">
+                            <a href="https://wa.me/919885716555?text=Hi!%20I%20would%20like%20to%20know%20more." target="_blank" class="inline-flex items-center bg-[#25D366] text-white font-bold px-4 py-2 rounded-full hover:bg-[#128C7E] transition-colors shadow-[0_0_10px_rgba(37,211,102,0.3)]">
+                                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+                                </svg>
+                                Click to Chat
+                            </a>
+                        </li>
+                        <li class="flex items-start justify-center md:justify-start"><svg class="w-5 h-5 mr-3 mt-1 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg> <span class="text-left">Pillar no. 205, 8CX8+HQC, Dargah Pahad,<br>Rajendar Nagar, uppar pally, Attapur,<br>Hyderabad, Upperpally, Telangana 500048</span></li>
+                    </ul>
+                </div>
+                <!-- Map Embed -->
+                <div>
+                    <h3 class="text-lg font-serif font-semibold text-white mb-4 uppercase tracking-wider text-secondary">Location</h3>
+                    <div class="w-full h-48 bg-gray-800 rounded-lg overflow-hidden border border-gray-700 shadow-lg">
+                        <iframe src="https://maps.google.com/maps?q=Pillar%20no.%20205,%208CX8+HQC,%20Dargah%20Pahad,%20Attapur,%20Hyderabad&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-gray-800 text-center text-xs text-gray-500">
+                &copy; 2026 Sky 9 Female Fitness. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- AOS JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true });
+        
+        // Hide preloader
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                preloader.style.opacity = '0';
+                setTimeout(() => { preloader.style.display = 'none'; }, 600);
+            }
+        });
+    </script>
+</body>
+</html>

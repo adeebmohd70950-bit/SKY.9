@@ -1,0 +1,97 @@
+/* Custom Font and Theme Configuration */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+html {
+    scroll-behavior: smooth;
+    font-family: 'Inter', sans-serif;
+    background-color: #000;
+    color: #fff;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/* Custom Scrollbar - Monochrome */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #050505;
+}
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Animation System */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Delay modifiers for stagger effects */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+
+/* Custom Glassmorphism */
+.glass {
+    background: rgba(10, 10, 10, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Card Hover Styles */
+.hover-card {
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.hover-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+}
+
+/* Preloader Styles */
+#preloader {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #050505;
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.logo-pulse {
+    width: 100px;
+    height: auto;
+    object-fit: contain;
+    animation: heartbeat 1.5s infinite;
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.3));
+    background-color: #fff;
+    border-radius: 50%;
+    padding: 0.5rem;
+}
+@keyframes heartbeat {
+    0% { transform: perspective(1000px) rotateY(0deg) scale(0.9); opacity: 0.8; }
+    50% { transform: perspective(1000px) rotateY(180deg) scale(1.1); opacity: 1; filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.8)); }
+    100% { transform: perspective(1000px) rotateY(360deg) scale(0.9); opacity: 0.8; }
+}
+
+/* Background overlay tweak for image blend */
+.bg-overlay {
+    background-color: rgba(0, 0, 0, 0.85); /* Heavy dark gradient overlay requirement from spec */
+}
